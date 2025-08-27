@@ -3,20 +3,18 @@ import sqlite3
 from datetime import date
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
-
-
 origins = [
-    "http://127.0.0.1:5500",   # local testing
-    "https://francisjdev.github.io"  # your GitHub Pages
+    "http://127.0.0.1:5500",
+    "https://francisjdev.github.io"
 ]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # temporary for testing
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 
@@ -33,7 +31,7 @@ def fetch_events(query, params=()):
     return {"status": status, "events": stores}
 
 
-@app.get("/events/")
+@app.get("/events")
 def read_root():
     today = date.today().isoformat()
     query = "SELECT shop, type, date, city, address, url FROM events WHERE date >= ?;"
@@ -83,7 +81,7 @@ def read_by_city_and_date(city: str = None, user_date: str = None):
     return {"status": status, "events": stores}
 
 # handling load up requests from front end
-@app.get("/comunas/")
+@app.get("/comunas")
 def get_comunas():
     conn = sqlite3.connect("events.db")
     conn.row_factory = sqlite3.Row
