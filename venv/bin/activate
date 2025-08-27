@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/francis/workspace/github.com/francisjdev/tempname.cl/venv"
+VIRTUAL_ENV="/Users/francis/workspace/github.com/francisjdev/pokeinfoapi/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
