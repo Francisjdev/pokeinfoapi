@@ -6,7 +6,7 @@ def get_events():
     end_date = today + timedelta(days=14)
 
     country = '_country/cl'
-    region = '_state/Región%20Metropolitana'
+    region = '_state/Santiago'
     radius = '_radius/50'
     unit = '_unit/km'
     date_param = f'_start/{today}'
